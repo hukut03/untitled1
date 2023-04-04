@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Home work OTUS Javascript </title>
+
+
+</head>
+
+<body>
+<script>
+    "use strict"
+
+    function addStudent() {
+        const studentsTab = document.getElementById("studentsTab");
+        let studentName = document.getElementById("studentName").value;
+
+        const newRow = studentsTab.insertRow(studentsTab.rows.length);
+
+        studentName += "(new)";
+
+        const newCell = newRow.insertCell(-1);
+        newCell.appendChild(document.createTextNode(studentName));
+    }
+
+</script>
+<table width="1000px" cellpadding="0" cellspacing="5" border="2">
+    <h1>Данные студентов</h1>
+
+
+    <tr>
+        <td>
+            <h3>Имя студента</h3>
+        </td>
+        <td>
+            <h3>Пол</h3>
+        </td>
+        <td>
+            <h3>Дата рождения</h3>
+        </td>
+        <td>
+            <h3>Возраст</h3>
+        </td>
+    </tr>
+</table>
+<table>
+    <tr><td>
+        <label width="1800px" cellpadding="10" cellspacing="50" border="1">
+            Новый студент:
+            <input id="studentName" type="text" value="">
+            <button onclick="addStudent()">Добавить студента</button>
+        </label></td>
+    </tr>
+    <tr><td>
+        <label width="1800px" cellpadding="10" cellspacing="50" border="1">
+            Выбрать пол:
+            <select>
+                <option>Мужской</option>
+                <option>Женский</option>
+            </select>
+            <!--            <button onclick = "addStudent()">Добавить пол</button>-->
+        </label>
+    </td>
+    </tr>
+
+    <tr><<td>
+        <input id="date" type="date" value="1986-11-13">
+    </td>
+    </tr>
+    <tr><<td>
+        <form action="handler.php">
+            <p>Введите свой возраст</p>
+            <p><input type="number" size="3" name="num" min="16" max="65" value="1"></p>
+        </form>
+    </td>
+    </tr>
+
+</table>
+
+
+</div>
+</body>
+</html>
