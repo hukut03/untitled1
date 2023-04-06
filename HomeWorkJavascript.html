@@ -1,83 +1,90 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Home work OTUS Javascript </title>
+    <meta charset="utf-8">
+    <title>Домашняя работа</title>
+    <style>
+        h1, h2, h3 {
+            color: steelblue;
+        }
 
+        .students-tab {
+            border: 1px solid steelblue;
+            width: 750px;
+            border-collapse: collapse;
+            margin-bottom: 50px;
+        }
+
+        .students-tab tr td {
+            border: 1px solid steelblue;
+        }
+
+        .students-tab-col1 {
+            width: 250px;
+        }
+    </style>
+
+    <script>
+        "use strict"
+
+        function addStudent() {
+            const studentsTab = document.getElementById("studentsTab");
+            let studentName = document.getElementById("studentName").value;
+            // let studentSex = document.getElementById("studentSex").value;
+            // let studentBorn = document.getElementById("studentBorn").value;
+            // let studentAge = document.getElementById("studentAge").value;
+
+            const newRow = studentsTab.insertRow(studentsTab.rows.length);
+
+
+            // studentName += "";
+            // studentSex += "";
+            // studentBorn += "";
+            // studentAge += "";
+
+            const newCell = newRow.insertCell(-1);
+            newCell.appendChild(document.createTextNode(studentName));
+            // newCell.appendChild(document.createTextNode(studentSex));
+            // newCell.appendChild(document.createTextNode(studentBorn));
+            // newCell.appendChild(document.createTextNode(studentAge));
+        }
+
+    </script>
 
 </head>
 
 <body>
-<script>
-    "use strict"
-
-    function addStudent() {
-        const studentsTab = document.getElementById("studentsTab");
-        let studentName = document.getElementById("studentName").value;
-
-        const newRow = studentsTab.insertRow(studentsTab.rows.length);
-
-        studentName += "(new)";
-
-        const newCell = newRow.insertCell(-1);
-        newCell.appendChild(document.createTextNode(studentName));
-    }
-
-</script>
-<table width="1000px" cellpadding="0" cellspacing="5" border="2">
-    <h1>Данные студентов</h1>
 
 
+<h2>Домашняя работа</h2>
+
+
+<h3>Таблица студентов</h3>
+<table class="students-tab" id="studentsTab">
+    <thead>
     <tr>
-        <td>
-            <h3>Имя студента</h3>
-        </td>
-        <td>
-            <h3>Пол</h3>
-        </td>
-        <td>
-            <h3>Дата рождения</h3>
-        </td>
-        <td>
-            <h3>Возраст</h3>
-        </td>
+        <td class="students-tab-col1">Имя студента</td>
+        <td class="students-tab-col2">Пол</td>
+        <td class="students-tab-col3">Дата рождения</td>
+        <td class="students-tab-col4">Возраст</td>
     </tr>
+    </thead>
 </table>
-<table>
-    <tr><td>
-        <label width="1800px" cellpadding="10" cellspacing="50" border="1">
-            Новый студент:
-            <input id="studentName" type="text" value="">
-            <button onclick="addStudent()">Добавить студента</button>
-        </label></td>
-    </tr>
-    <tr><td>
-        <label width="1800px" cellpadding="10" cellspacing="50" border="1">
-            Выбрать пол:
-            <select>
-                <option>Мужской</option>
-                <option>Женский</option>
-            </select>
-            <!--            <button onclick = "addStudent()">Добавить пол</button>-->
-        </label>
-    </td>
-    </tr>
 
-    <tr><<td>
+<div class="input-form">
+    <label>
+        Новый студент:
+        <input id="studentName" type="text" value="ФИО">
+        <select>
+            <option>Мужской</option>
+            <option>Женский</option>
+        </select>
         <input id="date" type="date" value="1986-11-13">
-    </td>
-    </tr>
-    <tr><<td>
-        <form action="handler.php">
-            <p>Введите свой возраст</p>
-            <p><input type="number" size="3" name="num" min="16" max="65" value="1"></p>
-        </form>
-    </td>
-    </tr>
-
-</table>
-
-
+        <input type="number" size="3" name="num" min="16" max="65" value="1">
+        <button onclick="addStudent()">Добавить</button>
+    </label>
 </div>
+
+
 </body>
 </html>
