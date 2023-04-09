@@ -26,27 +26,39 @@
 
     <script>
         "use strict"
+        let ageSum = 0;
+        let counter = 0;
 
         function addStudent() {
             const studentsTab = document.getElementById("studentsTab");
+            let averageAge = document.getElementById("averageAge");
             let studentName = document.getElementById("studentName").value;
-            // let studentSex = document.getElementById("studentSex").value;
-            // let studentBorn = document.getElementById("studentBorn").value;
-            // let studentAge = document.getElementById("studentAge").value;
+            let studentSex = document.getElementById("studentSex").value;
+            let studentBorn = document.getElementById("studentBorn").value;
+            let studentAge = parseInt((new Date().getTime() - new Date(studentBorn).getTime()) / 1000 / 60 / 60 / 24 / 365);
 
             const newRow = studentsTab.insertRow(studentsTab.rows.length);
 
-
-            // studentName += "";
-            // studentSex += "";
-            // studentBorn += "";
-            // studentAge += "";
-
             const newCell = newRow.insertCell(-1);
             newCell.appendChild(document.createTextNode(studentName));
-            // newCell.appendChild(document.createTextNode(studentSex));
-            // newCell.appendChild(document.createTextNode(studentBorn));
-            // newCell.appendChild(document.createTextNode(studentAge));
+            const newCell1 = newRow.insertCell(-1);
+            newCell1.appendChild(document.createTextNode(studentSex));
+            const newCell2 = newRow.insertCell(-1);
+            newCell2.appendChild(document.createTextNode(studentBorn));
+            const newCell3 = newRow.insertCell(-1);
+            newCell3.appendChild(document.createTextNode(studentAge));
+
+            counter += 1;
+            ageSum += studentAge;
+
+            setAverageAge();
+            document.body.prepend(div);
+            div.innerHTML = "Отправлено";
+
+            function setAverageAge() {
+                averageAge = ageSum / counter;
+                document.getElementById("averageAge").textContent = averageAge;
+            }
         }
 
     </script>
@@ -62,27 +74,35 @@
 <h3>Таблица студентов</h3>
 <table class="students-tab" id="studentsTab">
     <thead>
+
     <tr>
-        <td class="students-tab-col1">Имя студента</td>
-        <td class="students-tab-col2">Пол</td>
-        <td class="students-tab-col3">Дата рождения</td>
-        <td class="students-tab-col4">Возраст</td>
+        <td class="students-tab-1">Имя студента</td>
+        <td class="students-tab-2">Пол</td>
+        <td class="students-tab-3">Дата рождения</td>
+        <td class="students-tab-4">Возраст</td>
     </tr>
     </thead>
 </table>
 
+<table class="students-tab">
+    <tr>
+        <td>Средний возраст студентов</td>
+        <td id="averageAge">0</td>
+    </tr>
+</table>
 <div class="input-form">
     <label>
         Новый студент:
         <input id="studentName" type="text" value="ФИО">
-        <select>
+        <td><select id='studentSex'>
             <option>Мужской</option>
             <option>Женский</option>
-        </select>
-        <input id="date" type="date" value="1986-11-13">
-        <input type="number" size="3" name="num" min="16" max="65" value="1">
+        </select></td>
+        <td><input id="studentBorn" type="date" value="1986-11-13"></td>
+
         <button onclick="addStudent()">Добавить</button>
     </label>
+
 </div>
 
 
